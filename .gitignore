@@ -3,4 +3,4 @@ carton.lock
 storage/
 .mojo_secret
 .carton/
-.log/
+log/development.log
