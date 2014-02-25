@@ -322,6 +322,20 @@
          },
          "target" : "Mojolicious",
          "version" : "4.84"
+      },
+      "Mojolicious::Plugin::Authentication" : {
+         "dist" : "Mojolicious-Plugin-Authentication-1.26",
+         "mymeta" : {},
+         "name" : "Mojolicious::Plugin::Authentication",
+         "pathname" : "M/MA/MADCAT/Mojolicious-Plugin-Authentication-1.26.tar.gz",
+         "provides" : {
+            "Mojolicious::Plugin::Authentication" : {
+               "file" : "Mojolicious/Plugin/Authentication.pm",
+               "version" : "1.26"
+            }
+         },
+         "target" : "Mojolicious::Plugin::Authentication",
+         "version" : "1.26"
       }
    },
    "version" : "0.9"

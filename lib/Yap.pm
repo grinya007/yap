@@ -1,18 +1,39 @@
 package Yap;
 use Mojo::Base 'Mojolicious';
 
-# This method will run once at server start
-sub startup {
-  my $self = shift;
+use Yap::Model::User;
 
-  # Documentation browser under "/perldoc"
-  $self->plugin('PODRenderer');
+sub startup 
+{
+    my $self = shift;
 
-  # Router
-  my $r = $self->routes;
+    # Documentation browser under "/perldoc"
+    $self->plugin('PODRenderer');
 
-  # Normal route to controller
-  $r->get('/')->to('example#welcome');
+    $self->secrets([join('', `cat .mojo_secret`)]);
+    $self->hook(before_dispatch => sub
+    {
+        my ($c) = @_;
+        my $rUser;
+        my $sUid = $c->session('uid');
+        if ($sUid)
+        {
+            $rUser = Yap::Model::User->new(uid => $sUid);
+        }
+        else
+        {
+            $rUser = Yap::Model::User->new();
+            $c->session('uid', $rUser->uid());
+        }
+        $c->stash('user', $rUser);
+    });
+
+    # Router
+    my $r = $self->routes;
+    $r->namespaces(['Yap::Controller']);
+    $r->get('/')->to('pastes#history');
+    $r->post('/')->to('pastes#store');
+    $r->route('/:id', id => qr/[a-f0-9]+/)->to('pastes#retrieve');
 }
 
 1;
