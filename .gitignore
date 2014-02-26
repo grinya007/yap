@@ -1,6 +1,6 @@
 local/
+log/
+.carton/
 carton.lock
 storage/
 .mojo_secret
-.carton/
-log/development.log

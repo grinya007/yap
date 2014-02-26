@@ -1,0 +1,20 @@
+% layout 'default';
+% title 'yap';
+<div class="head">
+    <span class="logo">yap</span>
+    <span class="title">yet another pastebin</span>
+</div>
+<div class="left">
+    <div class="paste">
+        <div class="input"></div>
+        <div class="save">save</div>
+    </div>
+    <pre class="show"><code></code></pre>
+</div>
+<div class="right">
+    <div class="create"><a href="/">new</a></div>
+    <ul class="history"></ul>
+</div>
+
+
+

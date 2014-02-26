@@ -1,7 +1,7 @@
 package Yap;
 use Mojo::Base 'Mojolicious';
 
-use Yap::Model::User;
+use Yap::User;
 
 sub startup 
 {
@@ -18,11 +18,11 @@ sub startup
         my $sUid = $c->session('uid');
         if ($sUid)
         {
-            $rUser = Yap::Model::User->new(uid => $sUid);
+            $rUser = Yap::User->new(uid => $sUid);
         }
         else
         {
-            $rUser = Yap::Model::User->new();
+            $rUser = Yap::User->new();
             $c->session('uid', $rUser->uid());
         }
         $c->stash('user', $rUser);
@@ -31,9 +31,10 @@ sub startup
     # Router
     my $r = $self->routes;
     $r->namespaces(['Yap::Controller']);
-    $r->get('/')->to('pastes#history');
+    $r->get('/')->to('pastes#index');
     $r->post('/')->to('pastes#store');
     $r->route('/:id', id => qr/[a-f0-9]+/)->to('pastes#retrieve');
+    $r->get('/history')->to('pastes#history');
 }
 
 1;

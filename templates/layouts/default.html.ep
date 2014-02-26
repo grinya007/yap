@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head><title><%= title %></title></head>
+    <head>
+        <title><%= title %></title>
+        <script src="/js/jquery-2.1.0.min.js"></script>
+        <link rel="stylesheet" href="/js/highlight/styles/default.css">
+        <script src="/js/highlight/highlight.pack.js"></script>
+        <link rel="stylesheet" href="/js/codemirror-3.22/lib/codemirror.css">
+        <script src="/js/codemirror-3.22/lib/codemirror.js"></script>
+        <link rel="stylesheet" href="/css/style.css">
+        <script src="/js/yap.js"></script>
+    </head>
   <body><%= content %></body>
 </html>
