@@ -33,8 +33,9 @@ sub startup
     $r->namespaces(['Yap::Controller']);
     $r->get('/')->to('pastes#index');
     $r->post('/')->to('pastes#store');
-    $r->route('/:id', id => qr/[a-f0-9]+/)->to('pastes#retrieve');
     $r->get('/history')->to('pastes#history');
+    $r->route('/:id', id => qr/[a-f0-9]{8}/)->via('get')->to('pastes#retrieve');
+    $r->route('/:id', id => qr/[a-f0-9]{8}/)->via('delete')->to('pastes#delete');
 }
 
 1;

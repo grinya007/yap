@@ -1,20 +1,25 @@
 % layout 'default';
 % title 'yap';
 <div class="head">
-    <span class="logo">yap</span>
-    <span class="title">yet another pastebin</span>
+    <div class="head-left">
+        <span class="logo"><a href="/#">yap</a></span>
+        <span class="title">yet another pastebin</span>
+        <span class="lang"></span>
+    </div>
 </div>
 <div class="left">
-    <div class="paste">
-        <div class="input"></div>
-        <div class="save">save</div>
-    </div>
-    <pre class="show"><code></code></pre>
+    <div class="code"></div>
 </div>
 <div class="right">
-    <div class="create"><a href="/">new</a></div>
+    <div class="create"><a href="/#">new</a></div>
     <ul class="history"></ul>
 </div>
-
+<div class="foot">
+    <div class="controls">
+        <div class="save">save</div>
+        <div class="raw"><a href="/#">raw</a></div>
+    </div>
+    <div class="github"><a href="https://github.com/grinya007/yap">get yap</a></div>
+</div>
 
 
