@@ -23,7 +23,7 @@ sub startup
         else
         {
             $rUser = Yap::User->new();
-            $c->session('uid', $rUser->uid());
+            $c->session(uid => $rUser->uid(), expiration => 60*60*24*365*10);
         }
         $c->stash('user', $rUser);
     });
