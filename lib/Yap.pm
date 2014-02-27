@@ -6,11 +6,9 @@ use Yap::User;
 sub startup 
 {
     my $self = shift;
-
-    # Documentation browser under "/perldoc"
-    $self->plugin('PODRenderer');
-
     $self->secrets([join('', `cat .mojo_secret`)]);
+    
+    # Remember user
     $self->hook(before_dispatch => sub
     {
         my ($c) = @_;
