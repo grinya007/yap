@@ -27,7 +27,6 @@ sub store
 sub retrieve
 {
     my ($self) = @_;
-    warn 1;
     my $sContent = Yap::Storage->get_content_by_id($self->stash('id'));
     $self->render_not_found() if !$sContent;
     $self->render(format => 'text', text => $sContent);
