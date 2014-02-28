@@ -30,9 +30,10 @@ yap.showTime = function(sContent, sHash)
     $('ul.history').children().removeClass('current');
     $('div.create').removeClass('current');
     $('li#'+sHash).addClass('current');
-    $('div.raw > a').attr('href', '/'+sHash);
+    $('div.raw > a').attr('href', '/'+sHash).show();
     var sLang = hljs.highlightAuto(sContent).language || '';
     $('span.lang').text(sLang);
+    sLang = yap.translateLang(sLang);
     yap.codeMirror.setOption('mode', sLang);
     CodeMirror.autoLoadMode(yap.codeMirror, sLang);
     yap.codeMirror.setValue(sContent);
@@ -43,7 +44,7 @@ yap.pasteTime = function()
     $('span.lang').text('');
     $('ul.history').children().removeClass('current');
     $('div.create').addClass('current');
-    $('div.raw > a').attr('href', '/#');
+    $('div.raw > a').hide();
     yap.codeMirror.setValue('');
     yap.codeMirror.setOption('mode', '');
 };
@@ -111,5 +112,17 @@ yap.ts2date = function(iTs)
     var oDateNow = new Date();
     var oDate = new Date((iTs - oDateNow.getTimezoneOffset() * 60) * 1000);
     return oDate.toISOString().replace('T', '&nbsp;').replace('.000Z', '');
+};
+yap.hljs2codeMirror = 
+{
+    cpp: 'clike',
+    objectivec: 'clike',
+    bash: 'shell',
+    xml: 'htmlmixed'
+};
+yap.translateLang = function(sLang)
+{
+    if (sLang in yap.hljs2codeMirror) return yap.hljs2codeMirror[sLang];
+    else return sLang;
 };
 $(yap.init);

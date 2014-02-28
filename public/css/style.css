@@ -108,6 +108,7 @@ div.raw
     position: absolute;
     right: 0;
     color: grey;
+    display: none;
 }
 div.github
 {
@@ -123,4 +124,8 @@ span.delete
     margin-left: 5px;
     vertical-align: 1px;
     cursor: pointer;
+}
+div.save, div.raw a, div.github a
+{
+    border-bottom: dashed 1px #aaa;
 }
