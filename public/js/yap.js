@@ -31,6 +31,7 @@ yap.showTime = function(sContent, sHash)
     $('div.create').removeClass('current');
     $('li#'+sHash).addClass('current');
     $('div.raw > a').attr('href', '/'+sHash).show();
+    $('div.save').css('color', 'grey');
     var sLang = hljs.highlightAuto(sContent).language || '';
     $('span.lang').text(sLang);
     sLang = yap.translateLang(sLang);
@@ -45,6 +46,7 @@ yap.pasteTime = function()
     $('ul.history').children().removeClass('current');
     $('div.create').addClass('current');
     $('div.raw > a').hide();
+    $('div.save').css('color', 'black');
     yap.codeMirror.setValue('');
     yap.codeMirror.setOption('mode', '');
 };
